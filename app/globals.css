@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Design tokens — trading-research terminal, tuned for Max HQ (focus, not busy).
+   Subject grounding: Polymarket prediction markets → yes/no green/red is
+   reserved for semantic PnL/status only; the signature accent is amber
+   (signal/alert on a trading desk), not the default acid-green cluster. */
+@theme {
+  --color-bg: #0b0e14;
+  --color-surface: #141a24;
+  --color-surface-2: #1c2433;
+  --color-border: #232c3d;
+  --color-fg: #e7ecf3;
+  --color-muted: #8a93a6;
+  --color-accent: #f5a623; /* amber signal */
+  --color-pos: #3dd68c; /* positive PnL */
+  --color-neg: #f2555a; /* negative PnL */
+  --color-track: #3dd68c;
+  --color-watch: #f5a623;
+  --color-ignore: #6b7280;
+
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", monospace;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  overflow-x: clip;
+}
+
+body {
+  font-feature-settings: "cv05", "ss01";
+  overflow-x: clip;
+}
+
+/* Numeric/data cells read as a terminal feed, not body copy. */
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Rank marker — encodes real leaderboard position, not decoration. */
+.rank-marker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
